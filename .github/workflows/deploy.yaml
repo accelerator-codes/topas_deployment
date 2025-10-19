@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Dump job context
         env:
-        JOB_CONTEXT: ${{ toJson(job) }}
+          JOB_CONTEXT: ${{ toJson(job) }}
         run: echo "$JOB_CONTEXT"
 
       - name: Check username
