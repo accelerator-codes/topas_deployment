@@ -85,11 +85,11 @@ jobs:
           docker-images: true
           swap-storage: true
 
-      - name: Flatten bdsim containers
+      - name: Flatten topas containers
         shell: bash
         run: |
           docker pull bdsim/alma9-apptainer 
-          docker run -v ${{ github.workspace }}:/tmp bdsim/alma9-apptainer apptainer build ${{ matrix.dockerimage }}.sif docker:sboogert/${{ matrix.dockerimage }}:main
+          docker run -v ${{ github.workspace }}:/tmp bdsim/alma9-apptainer apptainer build ${{ matrix.dockerimage }}.sif docker:sboogert/${{ matrix.dockerimage }}:${{ github.ref_name }}
           du -sh ${{ github.workspace }}/*sif
 
       - name: Push to GHCR
